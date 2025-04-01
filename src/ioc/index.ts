@@ -12,20 +12,14 @@ type IoCResources = {
   apiConfig: ApiConfig;
 }
 
-const apiConfig: ApiConfig = {
-  path: '/api',
-  resources: {
-    users: '/users'
-  }
-}
-
-export const createIoCContainer = () =>  {
+const createIoCContainer = () =>  {
   const ioc = new IoCContainer<IoCResources>();
   
   ioc.registerClass('users', Users);
   ioc.registerClass('logger', Logger);
   ioc.registerClass('http', HTTP);
-  ioc.register('apiConfig', apiConfig);
 
   return ioc;
 };
+
+export const ioc = createIoCContainer();
